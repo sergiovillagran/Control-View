@@ -1,0 +1,87 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Control H3</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">   
+</head>
+
+<body onLoad="begin ();"> 
+  <div class="row">
+    <div class ="col-sm-2"></div>
+    <div class ="col-sm-8">  <!-- Form Name -->
+      <div class="row" id="debug">
+      </div>
+    </div>
+    <div class ="col-sm-2"></div>
+  </div>
+
+  <div class="row">
+    <div class ="col-sm-2"></div>
+    <div class ="col-sm-8">  <!-- Form Name -->
+      <br><legend>Control H3 </legend><br>
+    </div>
+    <div class ="col-sm-2"></div>
+  </div>
+  <div class="row">
+    <div class ="col-sm-4"></div>
+    <div class ="col-sm-4">
+      <fieldset>
+
+        <!-- Text input-->
+        <div class="form-group row">
+          <label class="col-sm-4 control-label" for="Name" >Name</label>  
+          <div class="col-sm-5">
+            <input id="name" name="name" type="text" placeholder="Name" class="form-control input-sm"   onchange="checkWorking()" required="" autofocus>
+          </div>
+        </div>
+
+        <!-- Password input-->
+        <div class="form-group row">
+          <label class="col-sm-4 control-label" for="Password">Password</label>
+          <div class="col-sm-5">
+            <input id="password" name="password" type="password" placeholder="Password" class="form-control input-sm" required="">
+          </div>
+        </div>
+
+        <!-- Labored input-->
+        <div class="form-group" id="divLabored">
+        </div>
+
+        <!-- Button -->
+        <div class="form-group">
+          <label class="col-sm-4 control-label" for="Sign in"></label>
+          <div class="col-sm-4">
+            <button id="SignIn"  name="SignIn" value = "true" class="btn btn-primary">Sign in</button>
+          </div>
+        </div>
+      </fieldset>
+      <legend></legend>
+    </div>
+    <div class ="col-sm-4"></div>
+  </div>
+  <div class="row">
+    <div class ="col-sm-2"></div>
+    <div class ="col-sm-8">  <!-- Form Name -->
+      <br><h4>Working now:</h4><br>
+    </div>
+    <div class ="col-sm-2"></div>
+  </div>
+  <div  class="row">
+    <div class ="col-sm-2"></div>
+    <div class ="col-sm-8">  <!-- Form Name -->
+      <table class="table table-hover" id="working">
+      </table>
+    </div>
+    <div class ="col-sm-2"></div>
+  </div>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>    
+  <!-- Logica -->
+  <script src="js/hostserv.js"></script>
+  <script src="js/mediator.js"></script>  
+</body>
+</html> 

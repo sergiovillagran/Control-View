@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html ng-app="Control-H3">
+<head>
+  <meta charset="utf-8">
+  <title>Control H3 - Sign Up</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">    
+</head>
+
+<body  ng-controller="signUpController"> 
+  <div class="row">
+    <div class ="col-sm-2"></div>
+    <div class ="col-sm-8">  <!-- Form Name -->
+      <div class="row" id="debug">
+        <legend>{{message_title}}</legend>
+        <p>{{message_content}}</p>
+      </div>
+    </div>
+    <div class ="col-sm-2"></div>
+  </div>
+  <div class="row">
+    <div class ="col-sm-2"></div>
+    <div class ="col-sm-8">  <!-- Form Name -->
+      <br><legend>Control H3 </legend><br>
+      <p>Give us your name and a password to begin.</p>
+    </div>
+    <div class ="col-sm-2"></div>
+  </div>
+  <div class="row">
+    <div class ="col-sm-4"></div>
+    <div class ="col-sm-4">
+      <fieldset>
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-sm-4 control-label" for="Name" >Name</label>  
+          <div class="col-sm-5">
+            <input  type="text" placeholder="Name" class="form-control input-sm" ng-click="reset()" autofocus ng-model="newUser.name">
+          </div>
+        </div>
+
+        <!-- Password input-->
+        <div class="form-group">
+          <label class="col-sm-4 control-label" for="Password">Password</label>
+          <div class="col-sm-5">
+            <input type="password" placeholder="Password" class="form-control input-sm" ng-click="reset()" ng-model="newUser.pass">
+          </div>
+        </div>
+
+        <!-- Button -->
+        <div class="form-group">
+          <label class="col-sm-4 control-label"></label>
+          <div class="col-sm-4">
+            <button class="btn btn-primary" ng-click="signUp()">Sign Up</button>                                
+          </div>
+        </div>
+      </fieldset>
+      <br></br>
+      <legend></legend>
+    </div>
+    <div class ="col-sm-4"></div>
+  </div>  
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>   
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+  <!-- Logica -->
+  <script src="js/hostserv.js"></script> 
+  <script src="js/controlador.js"></script>  
+</body>
+</html> 
