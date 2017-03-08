@@ -2,6 +2,7 @@
 var PROJECTS = {};
 var LABOREDINPROJECTS = [];
 
+
 function begin (){
 	workingNow();
 	setInterval(workingNow, 3000);
@@ -42,7 +43,8 @@ function checkWorking(){
   				'<div class="col-md-4">' +
 			    '<textarea class="form-control" id="labored" name="Labored" required=""></textarea>' +
 			  	'</div>');*/
-				getProjects(drawProjects);
+				$('#addTask').show();
+				
 			}
 			$("#SignIn").empty();
 			$("#SignIn").append("Sign out");
@@ -56,10 +58,35 @@ function checkWorking(){
 				$("#SignIn").empty();
 				$("#SignIn").append("Sign in");
 				$("#SignIn").val(true);
+				$('#addTask').hide();
 			}
 		}
 	}
 };
+
+function drawTask(){	
+	alert("si entro");
+		   var info = {
+        	ruta : "/addTask",
+        	type : 'POST',        	
+        	data : {
+        		"name" : $("#nameUser").val(),
+        		"password" : $("#passwordUser").val(),
+        		"labored" : getLabored()
+        	}
+        };
+		queryServer(info, function(error, result){
+			if(error){
+				alert(error.details);
+			}			
+			else
+			{
+				//showMessage(result);
+				$('#laboredSelect').empty();
+				$('#contentTask').empty();
+			}
+		});
+}
 
 function getProjects (callback) {
 	var info = {
@@ -70,14 +97,14 @@ function getProjects (callback) {
 	queryServer(info, callback);
 }
 
-function drawProjects (err, data){
+function drawProjectsModal (err, data){
 	if(err)
 		console.log("error in geting projects");
 	else{
-		$("#divLabored").append('<div class = "form-group row"><label class = "col-sm-4 for = "laboredSelect">project: </label> <div class = "col-sm-5"><select class="form-control select-md" id = "laboredSelect"></div>');
+		//$("#divLabored").append('<div class = "form-group row"><label class = "col-sm-4 for = "laboredSelect">project: </label> <div class = "col-sm-5"><select class="form-control select-md" id = "laboredSelect"></div>');
 		
 		$('#laboredSelect').on('change', function() {
-			drawProjectRowinlaboredView(this.value);
+			drawProjectandButtonTask(this.value);
 		})
 
 		for(var index in data){
@@ -88,11 +115,11 @@ function drawProjects (err, data){
 	}
 }
 
-function drawProjectRowinlaboredView(projectId){
+function drawProjectandButtonTask(projectId){
 	if(PROJECTS[projectId].isDrawed)
 		return
 	
-	$("#divLabored").append('<div class = "form-group row" id = "row' + PROJECTS[projectId]._id + '">');
+	$("#contentTask").append('<div class = "form-group row" id = "row' + PROJECTS[projectId]._id + '">');
 	$('#row' + PROJECTS[projectId]._id).append('<label class = "col-sm-4 for = "labored' + PROJECTS[projectId]._id + '"> ' + PROJECTS[projectId].name + ': </label>');
 	$('#row' + PROJECTS[projectId]._id).append('<div class = "col-sm-5"><input type="text" class="form-control input-sm" id = "labored'+ PROJECTS[projectId]._id +'" required autofocus></textarea></div>');
 	$('#row' + PROJECTS[projectId]._id).append('<div class = "col-sm-2"><select class="form-control select-sm" id = "laboredHours'+ PROJECTS[projectId]._id +'"><option value = "1">1</option><option value = "2">2</option><option value = "3">3</option><option value = "5">5</option><option value = "8">8</option><option value = "12">12</option>');
@@ -150,6 +177,21 @@ $(document).ready(function(){
 			}
 		});
     });
+
+	$("#addTask").click(function(){		
+		 $('#modalTask').modal('show');
+		   $('#nameUser').val($('#name').val());
+           $('#passwordUser').val($('#password').val());
+		 getProjects(drawProjectsModal);
+
+	})
+
+	$("#btnAddTask").click(function(){
+		drawTask();
+		$('#modalTask').modal('hide');
+
+	})
+	
 });
 
 function queryServer (info, callback){
@@ -203,4 +245,7 @@ function clear(){
 	$("#SignIn").append("Sign in");
 	$("#SignIn").val(true);
 };
+
+
+
 

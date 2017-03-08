@@ -9,6 +9,7 @@
 </head>
 
 <body onLoad="begin ();"> 
+
   <div class="row">
     <div class ="col-sm-2"></div>
     <div class ="col-sm-8">  <!-- Form Name -->
@@ -53,10 +54,13 @@
         <!-- Button -->
         <div class="form-group">
           <label class="col-sm-4 control-label" for="Sign in"></label>
+        
           <div class="col-sm-4">
-            <button id="SignIn"  name="SignIn" value = "true" class="btn btn-primary">Sign in</button>
+            <button id="addTask"  name="addTask" value = "true" class="btn btn-default" style="display:none">Add Task</button>
+            <button id="SignIn"  name="SignIn" value = "true" class="btn btn-primary">Sign in</button>            
           </div>
         </div>
+        
       </fieldset>
       <legend></legend>
     </div>
@@ -77,11 +81,45 @@
     </div>
     <div class ="col-sm-2"></div>
   </div>
+  <!-- Modal  -->
+<div id="modalTask" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <form action="" method ="post">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h3 class="modal-title">add Task</h3>
+                        </div>
+                        <div id="body_modal" class="modal-body">
+
+                            <input type="hidden" value="" id="nameUser">
+                            <input type="hidden" value="" id="passwordUser">
+                            <div class="form-group">
+                                <label for='nombre' >Projects:</label>
+                                <select class="form-control select-md" id = "laboredSelect"></select>                                
+                            </div>
+                            <div id="contentTask">
+                               
+                            </div>                       
+                        </div>
+                        <div id="modal_footer" class="modal-footer">
+                            <input value="Cancelar" data-dismiss="modal" class="btn btn-default">
+                            <input type="" value="Enviar Datos" id="btnAddTask" class="btn btn-success">
+                        </div>
+                    </form>
+                </div>
+            </div>
+</div><!-- /.modal -->
+
   <!-- Latest compiled and minified JavaScript -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>    
   <!-- Logica -->
   <script src="js/hostserv.js"></script>
   <script src="js/mediator.js"></script>  
+  <script src="js/notifications.js"></script> 
+  
 </body>
 </html> 
